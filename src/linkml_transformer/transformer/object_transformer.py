@@ -55,6 +55,13 @@ class ObjectTransformer(Transformer):
         else:
             self.object_index = ObjectIndex(source_obj, schemaview=self.source_schemaview)
 
+    def deprecate(self, source_obj: Any):
+        """
+        Deprecate an object.
+
+        :param source_obj: source data structure to be deprecated
+        """
+
     def transform(
         self,
         source_obj: OBJECT_TYPE,
@@ -65,8 +72,9 @@ class ObjectTransformer(Transformer):
         Transform a source object into a target object.
 
         :param source_obj: source data structure
-        :param source_type: source_obj instantiates this (may be class, type, or enum)
-        :param target_type: target_obj instantiates this (may be class, type, or enum)
+
+        :param source_type: source_obj instantiates this (source_type value may be class, type, or enum)
+        :param target_type: target_obj instantiates this (target_type value may be class, type, or enum)
         :return: transformed data, either as type target_type or a dictionary
         """
         sv = self.source_schemaview
